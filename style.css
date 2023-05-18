@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.container {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #c5c5c5;
+  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  max-width: 700px;
+  /* width: 700px;
+    height: 560px; */
+  width: 100%;
+}
+
+.container .form {
+  padding: 54px;
+}
+
+.container .form .title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  position: relative;
+}
+
+.form .input_field {
+  margin-top: 50px;
+  position: relative;
+  width: 100%;
+  height: 70px;
+}
+
+.input_field input {
+  height: 100%;
+  width: 100%;
+  margin-right: 22px;
+  padding: 0 45px;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  outline: none;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.input_field input:is(:focus, :valid) {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.input_field i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #c5c5c5;
+  font-size: 23px;
+  padding: 15px;
+  transition: all 0.2s ease;
+}
+
+.form .checkbox-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 14px;
+}
+
+.form a {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  text-decoration: none;
+  color: #0014ff;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.from button {
+  margin-top: 35px;
+}
+
+.form .button input {
+  border: none;
+  background: #fe9900;
+  border-radius: 8px;
+  color: #fff;
+  letter-spacing: 1px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #ffb443;
+}
+
+.form .login-signup {
+  margin-top: 25px;
+  text-align: center;
+}
