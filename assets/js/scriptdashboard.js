@@ -12,7 +12,7 @@ allSideMenu.forEach((item) => {
 });
 
 // TOGGLE SIDEBAR
-const menuBar = document.querySelector("#content nav .fas.fa-solid fa-bars");
+const menuBar = document.querySelector("#content nav .fa-solid.fa-bars");
 const sidebar = document.getElementById("sidebar");
 
 menuBar.addEventListener("click", function () {
