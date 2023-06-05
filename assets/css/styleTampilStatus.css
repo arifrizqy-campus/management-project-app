@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--poppins);
+  /* font-family: var(--lato); */
 }
 
 a {
@@ -410,6 +410,7 @@ body {
   width: auto;
   margin: 0.5rem;
   pointer-events: none;
+  font-family: var(--poppins);
 }
 
 .modal.fade .modal-dialog {
@@ -578,7 +579,7 @@ body {
 .modal-dialog .modal-content .modal-body form button {
   padding: 6px 10px;
   align-self: flex-end;
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: var(--primary);
   color: #fff;
   border: none;
@@ -587,6 +588,22 @@ body {
 .modal-dialog .modal-content .modal-body form button:hover {
   background-color: #e08600;
   cursor: pointer;
+}
+
+.swal-text,
+.swal-title {
+  font-family: var(--poppins);
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 4px;
+  background-color: var(--primary);
+  font-size: 12px;
+}
+
+.swal-button:hover {
+  background-color: #e08600 !important;
 }
 
 /* MAIN */
