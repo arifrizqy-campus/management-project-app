@@ -22,12 +22,8 @@ menuBar.addEventListener("click", function () {
 function swalSuccess() {
   swal("Success!", "Data telah ditambahkan !", "success");
   setTimeout(function () {
-    location.reload();
+    location.reload(); // Reload halaman setelah 1,7 detik menjalankan fungsi
   }, 1700);
-}
-
-function swalFailed() {
-  swal("Failed!", "Pesan Tidak Terkirim", "error");
 }
 
 function swalWarn() {
@@ -35,7 +31,7 @@ function swalWarn() {
 }
 
 function Submit(event) {
-  event.preventDefault();
+  event.preventDefault(); // Agar halaman tidak ter-reload pada klik submit form
   const dataStatus = document.getElementById("sName").value;
   if (dataStatus === "") {
     swalWarn();
