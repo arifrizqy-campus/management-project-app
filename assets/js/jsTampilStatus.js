@@ -18,3 +18,28 @@ const sidebar = document.getElementById("sidebar");
 menuBar.addEventListener("click", function () {
   sidebar.classList.toggle("hide");
 });
+
+function swalSuccess() {
+  swal("Success!", "Data telah ditambahkan !", "success");
+  setTimeout(function () {
+    location.reload();
+  }, 1700);
+}
+
+function swalFailed() {
+  swal("Failed!", "Pesan Tidak Terkirim", "error");
+}
+
+function swalWarn() {
+  swal("Warning!", "Pastikan semua kolom telah terisi !", "warning");
+}
+
+function Submit(event) {
+  event.preventDefault();
+  const dataStatus = document.getElementById("sName").value;
+  if (dataStatus === "") {
+    swalWarn();
+  } else {
+    swalSuccess();
+  }
+}
