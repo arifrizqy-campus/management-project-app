@@ -210,7 +210,11 @@ body {
    border-radius: 12px;
 }
 #content nav button:hover {
-   background-color: var(--primary);
+   background-color: #e10202;
+   cursor: pointer;
+}
+#content nav .fa-bars:hover {
+   cursor: pointer;
 }
 
 /* NAVBAR */
