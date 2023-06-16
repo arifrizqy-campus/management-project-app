@@ -78,22 +78,18 @@
       let dataStatus = $('#status').val();
       $.ajax({
          url: "<?= base_url('/list-status'); ?>",
-         method: "post",
+         method: 'POST',
+         dataType: 'json',
          data: {
             status: dataStatus
          },
          success: function(response) {
-            if (response.status === 'success') {
-               // $('#list_status').val('');
-               // swalSuccess();
-               // getDataStatus();
-               // alert(response.message);
-               console.log(response);
-            } else {
-               alert('Failed to insert data.');
-            }
+            $('#list_status').val('');
+            swalSuccess();
+            getDataStatus();
          },
-         error: function() {
+         error: function(xhr, status, error) {
+            console.log(xhr.responseText);
             alert('An error occurred.');
          }
       })

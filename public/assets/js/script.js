@@ -29,3 +29,15 @@ function swalSuccess() {
 function swalWarn() {
    swal("Warning!", "Pastikan semua kolom telah terisi !", "warning");
 }
+
+function generateRandomString(length) {
+   var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+   var result = "";
+   var charactersLength = characters.length;
+
+   for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+
+   return result;
+}

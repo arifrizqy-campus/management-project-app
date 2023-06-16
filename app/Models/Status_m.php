@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class Status_m extends Model
 {
-   protected $table        = 'tb_status';
-   protected $primary      = 'id_status';
+   protected $table           = 'tb_status';
+   protected $primary         = 'id_status';
+   protected $allowedFields   = ['id_status', 'status'];
 }

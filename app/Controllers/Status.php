@@ -32,8 +32,8 @@ class Status extends BaseController
          'id_status' => $id,
          'status' => $status
       ];
-      // $response = $this->statusModel->save($data);
+      $response = $this->statusModel->save($data);
 
-      return json_encode($data);
+      return json_encode($response);
    }
 }
