@@ -9,11 +9,11 @@
             <h5 class="modal-title" id="exampleModalLongTitle">Add Data Status Project</h5>
          </div>
          <div class="modal-body">
-            <form action="#" method="post" onsubmit="Submit(event)">
-               <label for="sStatus">Status Name</label> <br />
-               <input type="text" id="sStatus" class="field" placeholder="Type Status Name" />
-               <button type="submit">Submit</button>
-            </form>
+            <div class="form">
+               <label for="status">Status Name</label> <br />
+               <input type="text" id="status" class="field" placeholder="Type Status Name" required />
+               <button type="submit" onclick="sendDataStatus()">Submit</button>
+            </div>
          </div>
       </div>
    </div>
@@ -36,48 +36,7 @@
                   <th class="column-act">Action</th>
                </tr>
             </thead>
-            <tbody>
-               <tr>
-                  <td>01</td>
-                  <td>Name 1</td>
-                  <td>
-                     <button class="edit-btn">Edit</button>
-                     <button class="delete-btn">Delete</button>
-                  </td>
-               </tr>
-               <tr>
-                  <td>02</td>
-                  <td>Name 2</td>
-                  <td>
-                     <button class="edit-btn">Edit</button>
-                     <button class="delete-btn">Delete</button>
-                  </td>
-               </tr>
-               <tr>
-                  <td>03</td>
-                  <td>Name 3</td>
-                  <td>
-                     <button class="edit-btn">Edit</button>
-                     <button class="delete-btn">Delete</button>
-                  </td>
-               </tr>
-               <tr>
-                  <td>04</td>
-                  <td>Name 4</td>
-                  <td>
-                     <button class="edit-btn">Edit</button>
-                     <button class="delete-btn">Delete</button>
-                  </td>
-               </tr>
-               <tr>
-                  <td>05</td>
-                  <td>Name 5</td>
-                  <td>
-                     <button class="edit-btn">Edit</button>
-                     <button class="delete-btn">Delete</button>
-                  </td>
-               </tr>
-            </tbody>
+            <tbody id="list_status"></tbody>
          </table>
       </div>
    </div>
@@ -88,16 +47,61 @@
 <?= $this->section('js'); ?>
 <!-- JavaScript -->
 <script src="<?= base_url('assets/js/script.js'); ?>"></script>
-<script>
-   function Submit(event) {
-      event.preventDefault(); // Agar halaman tidak ter-reload pada klik submit form
-      const dataStatus = document.getElementById("sStatus").value;
-      if (dataStatus === "") {
-         swalWarn();
-      } else {
-         swalSuccess();
-      }
-   }
+<script type="text/javascript">
+   const getDataStatus = () => {
+      $.ajax({
+         url: "<?= base_url('/list-status/getDataStatus'); ?>",
+         method: "get",
+         success: function(response) {
+            let listStatus = JSON.parse(response);
+            let content = '';
+            let nomor = 0;
+            listStatus.forEach(dataStatus => {
+               nomor++;
+               content += `
+                  <tr>
+                     <td>${nomor}</td>
+                     <td>${dataStatus.status}</td>
+                     <td>
+                        <a href="#" class="edit-btn">Edit</a>
+                        <a href="#" class="delete-btn">Delete</a>
+                     </td>
+                  </tr>
+               `;
+            });
+            $("#list_status").append(content);
+         }
+      })
+   };
+
+   const sendDataStatus = () => {
+      let dataStatus = $('#status').val();
+      $.ajax({
+         url: "<?= base_url('/list-status'); ?>",
+         method: "post",
+         data: {
+            status: dataStatus
+         },
+         success: function(response) {
+            if (response.status === 'success') {
+               // $('#list_status').val('');
+               // swalSuccess();
+               // getDataStatus();
+               // alert(response.message);
+               console.log(response);
+            } else {
+               alert('Failed to insert data.');
+            }
+         },
+         error: function() {
+            alert('An error occurred.');
+         }
+      })
+   };
+
+   $(document).ready(function() {
+      getDataStatus();
+   })
 </script>
 <!-- JavaScript -->
 <?= $this->endSection(); ?>

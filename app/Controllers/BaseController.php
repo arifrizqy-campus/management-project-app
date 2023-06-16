@@ -55,4 +55,15 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    public function generateRandomStr($length)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomStr = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomStr .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomStr;
+    }
 }

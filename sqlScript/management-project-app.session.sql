@@ -48,3 +48,7 @@ INSERT INTO tb_position (id_position, position)
             ('0088', 'Middle'),
             ('9214', 'Junior'),
             ('8309', 'Manager');
+
+DESCRIBE tb_status;
+
+SELECT * FROM tb_status;

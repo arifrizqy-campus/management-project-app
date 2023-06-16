@@ -6,6 +6,6 @@ class Role extends BaseController
 {
    public function index()
    {
-      return view('pages/StatusProject/tampilStatus');
+      return view('pages/Role/tampilRole');
    }
 }
