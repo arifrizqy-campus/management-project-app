@@ -31,6 +31,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/list-status', 'Status::index');
+$routes->get('/list-position', 'Position::index');
+$routes->get('/list-department', 'Department::index');
+$routes->get('/list-role', 'Role::index');
 
 /*
  * --------------------------------------------------------------------
