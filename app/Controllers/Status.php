@@ -13,9 +13,18 @@ class Status extends BaseController
       $this->statusModel = new Status_m();
    }
 
-   public function index()
+   public function index($id = null)
    {
-      return view('pages/StatusProject/tampilStatus');
+      if ($id === null) {
+         return view('pages/StatusProject/tampilStatus');
+      } else {
+         $data = $this->statusModel->find($id);
+         $result = [
+            'data' => $data
+         ];
+
+         return view('pages/StatusProject/formUbah', $result);
+      }
    }
 
    public function getDataStatus()
@@ -29,10 +38,38 @@ class Status extends BaseController
       $status = $this->request->getPost();
 
       $data = [
-         'id_status' => $id,
+         'id' => $id,
          'status' => $status
       ];
-      $response = $this->statusModel->save($data);
+      $response = $this->statusModel->insert($data);
+
+      return json_encode($response);
+   }
+
+   public function editDataStatus($id)
+   {
+      $id = $this->request->getPost('id');
+      $data = [
+         'status' => $this->request->getPost('status')
+      ];
+
+      $this->statusModel->update($id, $data);
+
+      $response = [
+         'status' => 'success',
+         'message' => 'Data updated successfully'
+      ];
+
+      return $this->response->setJSON($response);
+   }
+
+   public function deleteDataStatus($id)
+   {
+      $result = $this->statusModel->delete($id);
+
+      $response = [
+         'success' => $result
+      ];
 
       return json_encode($response);
    }

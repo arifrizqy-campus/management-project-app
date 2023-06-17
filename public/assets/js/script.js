@@ -19,8 +19,8 @@ menuBar.addEventListener("click", function () {
    sidebar.classList.toggle("hide");
 });
 
-function swalSuccess() {
-   swal("Success!", "Data telah ditambahkan !", "success");
+function swalSuccess(pesan) {
+   swal("Success!", pesan, "success");
    setTimeout(function () {
       location.reload(); // Reload halaman setelah 1,7 detik menjalankan fungsi
    }, 1700);

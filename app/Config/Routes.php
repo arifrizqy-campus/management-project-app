@@ -32,8 +32,11 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 $routes->get('/list-status', 'Status::index');
-$routes->post('/list-status', 'Status::sendDataStatus');
 $routes->get('/list-status/getDataStatus', 'Status::getDataStatus');
+$routes->post('/list-status', 'Status::sendDataStatus');
+$routes->get('/list-status/(:segment)', 'Status::index/$1');
+$routes->post('/list-status/(:segment)', 'Status::editDataStatus/$1');
+$routes->delete('/list-status/(:segment)', 'Status::deleteDataStatus/$1');
 
 $routes->get('/list-position', 'Position::index');
 

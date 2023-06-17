@@ -2,7 +2,7 @@
 
 <?= $this->section('main-content'); ?>
 <!-- Modal -->
-<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalTambahData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -26,7 +26,7 @@
       <div class="order">
          <div class="head">
             <h3>Status Project</h3>
-            <button type="button" class="add-btn" data-toggle="modal" data-target="#modalForm">Add Data</button>
+            <button type="button" class="add-btn" data-toggle="modal" data-target="#modalTambahData">Add Data</button>
          </div>
          <table>
             <thead>
@@ -51,20 +51,21 @@
    const getDataStatus = () => {
       $.ajax({
          url: "<?= base_url('/list-status/getDataStatus'); ?>",
-         method: "get",
+         method: "GET",
          success: function(response) {
             let listStatus = JSON.parse(response);
             let content = '';
             let nomor = 0;
             listStatus.forEach(dataStatus => {
                nomor++;
+               let id = JSON.stringify(dataStatus.id);
                content += `
                   <tr>
                      <td>${nomor}</td>
                      <td>${dataStatus.status}</td>
                      <td>
-                        <a href="#" class="edit-btn">Edit</a>
-                        <a href="#" class="delete-btn">Delete</a>
+                        <a href='<?= base_url('/list-status'); ?>/${dataStatus.id}' class="edit-btn">Edit</a>
+                        <button class="delete-btn" onclick='deleteDataStatus(${id})'>Delete</button>
                      </td>
                   </tr>
                `;
@@ -74,26 +75,52 @@
       })
    };
 
-   const sendDataStatus = () => {
+   const sendDataStatus = (id = '') => {
       let dataStatus = $('#status').val();
+
+      if (id === '') {
+         $.ajax({
+            url: "<?= base_url('/list-status'); ?>",
+            method: 'POST',
+            dataType: 'json',
+            data: {
+               status: dataStatus
+            },
+            success: function(response) {
+               $('#list_status').val('');
+               swalSuccess("Data has been added");
+               getDataStatus();
+            }
+         })
+      } else {
+         // $.ajax({
+         //    url: "<?= base_url('/list-status'); ?>",
+         //    method: 'PUT',
+         //    dataType: 'json',
+         //    data: {
+         //       status: dataStatus
+         //    },
+         //    success: function(response) {
+         //       $('#list_status').val('');
+         //       swalSuccess("Data has been added");
+         //       getDataStatus();
+         //    }
+         // });
+      }
+
+   };
+
+   const deleteDataStatus = (id) => {
       $.ajax({
-         url: "<?= base_url('/list-status'); ?>",
-         method: 'POST',
-         dataType: 'json',
-         data: {
-            status: dataStatus
-         },
+         url: `<?= base_url('/list-status') ?>/${id}`,
+         method: 'DELETE',
          success: function(response) {
             $('#list_status').val('');
-            swalSuccess();
+            swalSuccess("Data has been deleted");
             getDataStatus();
-         },
-         error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-            alert('An error occurred.');
          }
-      })
-   };
+      });
+   }
 
    $(document).ready(function() {
       getDataStatus();
