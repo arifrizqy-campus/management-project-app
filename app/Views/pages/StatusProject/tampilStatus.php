@@ -75,10 +75,10 @@
       })
    };
 
-   const sendDataStatus = (id = '') => {
+   const sendDataStatus = () => {
       let dataStatus = $('#status').val();
 
-      if (id === '') {
+      if (dataStatus) {
          $.ajax({
             url: "<?= base_url('/list-status'); ?>",
             method: 'POST',
@@ -92,20 +92,6 @@
                getDataStatus();
             }
          })
-      } else {
-         // $.ajax({
-         //    url: "<?= base_url('/list-status'); ?>",
-         //    method: 'PUT',
-         //    dataType: 'json',
-         //    data: {
-         //       status: dataStatus
-         //    },
-         //    success: function(response) {
-         //       $('#list_status').val('');
-         //       swalSuccess("Data has been added");
-         //       getDataStatus();
-         //    }
-         // });
       }
 
    };

@@ -44,6 +44,9 @@ $routes->get('/list-department', 'Department::index');
 
 $routes->get('/list-role', 'Role::index');
 
+$routes->get('/login', 'Login::index');
+$routes->get('/register', 'Register::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

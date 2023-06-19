@@ -10,7 +10,7 @@
          </div>
          <div>
             <label for="status">Status Name</label> <br />
-            <input type="text" id="id" class="field" value="<?= isset($data) ? $data['id'] : ''; ?>" style="display: hidden;" readonly />
+            <input type="text" id="id" value="<?= isset($data) ? $data['id'] : ''; ?>" style="display: none;" readonly />
             <input type="text" id="status" class="field" value="<?= isset($data) ? $data['status'] : ''; ?>" placeholder="Type Status Name" required />
             <button type="submit" onclick="sendDataStatus()" style="display: block;">Submit</button>
          </div>
@@ -39,7 +39,6 @@
             swalSuccess("Data has been update");
          }
       });
-
    };
 </script>
 <!-- JavaScript -->

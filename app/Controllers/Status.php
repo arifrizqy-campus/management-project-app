@@ -15,9 +15,7 @@ class Status extends BaseController
 
    public function index($id = null)
    {
-      if ($id === null) {
-         return view('pages/StatusProject/tampilStatus');
-      } else {
+      if (!($id === null)) {
          $data = $this->statusModel->find($id);
          $result = [
             'data' => $data
@@ -25,6 +23,7 @@ class Status extends BaseController
 
          return view('pages/StatusProject/formUbah', $result);
       }
+      return view('pages/StatusProject/tampilStatus');
    }
 
    public function getDataStatus()

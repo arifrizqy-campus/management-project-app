@@ -22,7 +22,7 @@
          <span class="text">Management Project App</span>
       </a>
       <ul class="side-menu top">
-         <li class="active">
+         <li class="-">
             <a href="/">
                <i class="fa-solid fa-house"></i>
                <span class="text">Dashboard</span>
@@ -52,7 +52,7 @@
                <span class="text">Client company</span>
             </a>
          </li>
-         <li class="-">
+         <li class="active">
             <a href="<?= base_url("/list-status"); ?>">
                <i class="fa-solid fa-list-check"></i>
                <span class="text">Status project</span>
